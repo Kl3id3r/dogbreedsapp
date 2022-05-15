@@ -9,6 +9,7 @@ import { useForm, Controller } from "react-hook-form";
 import styles from '../styles/PublicStyles';
 import colors from '../theme/colors';
 import fonts from '../theme/fonts';
+import UserIconSvg from '../assets/icons/userIcon.svg';
 
 // @Types
 import { IUserData } from '../types/UserDataType';
@@ -26,13 +27,8 @@ const Login = () => {
 
     return (
         <View style={styles.containerLogin}>
-            <Image
-                style={styles.authLogo}
-                source={{
-                    uri: 'https://images.dog.ceo/breeds/waterdog-spanish/20180706_194432.jpg'
-                }}
-            />
-
+            <UserIconSvg width={45} height={45} />
+            
             <View style={styles.boxLoginTitle}>
                 <Text style={styles.titleLogin}>BreedsApp</Text>
                 <Text style={{ fontSize: fonts.size.font16, color: colors.gray, fontWeight: '600' }}>Sign In</Text>
