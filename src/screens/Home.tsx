@@ -1,12 +1,14 @@
 // @Vendors
 import React, { useEffect } from 'react';
-import { Button, StyleSheet, Text, View, FlatList } from 'react-native';
+import { FlatList, Text, View } from 'react-native';
 import { useDispatch, useSelector } from 'react-redux';
 
 // @Store
 import { RootState } from '../store';
 import { fetchBreeds } from '../store/breedsSlice';
 
+// @Components
+import BreedItem from '../components/BreedItem';
 
 const Home = ({ navigation }) => {
     const dispatch = useDispatch()
@@ -16,30 +18,21 @@ const Home = ({ navigation }) => {
         dispatch(fetchBreeds())
     }, []);
 
-    useEffect(() => {
-        console.log(breeds);
-    }, [breeds]);
+    const handleClickItem = (item: string, subItems: string[]) => {
+        navigation.navigate('Details', { item, subItems });
+    }
 
     return (
-        <View>
+        <View style={{ flex: 1 }}>
             <Text>Breeds ({breeds.length})</Text>
-
             <FlatList
                 data={breeds}
-                renderItem={({ item }) => <Text>{item[0]}</Text>}
+                renderItem={({ item }) =>
+                    <BreedItem item={item[0]} subItems={item[1]} onPressItem={handleClickItem} />
+                }
             />
-
-            <Button
-                title="Go to Profile"
-                onPress={() => {
-                    navigation.navigate('Profile')
-                }}
-            />
-
         </View>
     )
 }
 
-export default Home
-
-const styles = StyleSheet.create({})
+export default Home;
