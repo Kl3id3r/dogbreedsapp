@@ -6,7 +6,7 @@ import {
 import { IAction, IAuth } from '../types/AppType';
 import { IUserData } from '../types/UserDataType';
 // @Utils
-import { setItem } from '../utils/storage';
+import { getItem, setItem } from '../utils/storage';
 
 const PREFIX = 'auth';
 const authAdapter = createEntityAdapter<IAuth>({});
@@ -18,6 +18,14 @@ export const fetchAuthLogin = createAsyncThunk(`${PREFIX}/fetchLogin`, async (pa
     setItem('@user_data', jsonToString)
     const payload = { ...params }
     return { payload };
+});
+
+export const checkAuthentication = createAsyncThunk(`${PREFIX}/checkAuthentication`, async () => {
+    const userDataLocal = await getItem('@user_data');
+    if (userDataLocal) {
+        return JSON.parse(userDataLocal);
+    }
+    return Error('Not found data');
 });
 
 // Reducer
@@ -47,6 +55,18 @@ export const authSlice = createSlice({
                 state.loading = false
                 state.errorMessage = action?.error?.message
                 state.serverErrors = true
+            })
+            .addCase(checkAuthentication.fulfilled, (state, action: IAction) => {
+                state.loading = false
+                state.isAuthenticated = true
+                state.user = action.payload
+                state.serverErrors = false
+            })
+            .addCase(checkAuthentication.rejected, (state, action: IAction) => {
+                state.loading = false
+                state.isAuthenticated = false
+                state.errorMessage = action?.error?.message
+                state.serverErrors = false
             })
     },
 });
