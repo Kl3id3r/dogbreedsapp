@@ -1,11 +1,13 @@
-import { StyleSheet, Text, View } from 'react-native'
 import React from 'react'
+import { StyleSheet, Text } from 'react-native'
+import AuthStack from '../navigation/AuthStack'
 
 const PublicLayout = () => {
   return (
-    <View>
+    <>
       <Text>PublicLayout</Text>
-    </View>
+      <AuthStack />
+    </>
   )
 }
 

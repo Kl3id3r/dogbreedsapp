@@ -1,12 +1,13 @@
-import { StyleSheet, Text, View } from 'react-native'
 import React from 'react'
+import { StyleSheet, Text } from 'react-native'
+import MainStack from '../navigation/MainStack'
 
-const PrivateLayout = ({ children, ...props }) => {
+const PrivateLayout = () => {
   return (
-    <View>
-      <Text>PrivateLayout</Text>
-      {children}
-    </View>
+    <>
+      <Text>Someee</Text>
+      <MainStack />
+    </>
   )
 }
 

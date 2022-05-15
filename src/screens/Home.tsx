@@ -18,7 +18,7 @@ const Home = ({ navigation }) => {
         dispatch(fetchBreeds())
     }, []);
 
-    const handleClickItem = (item: string, subItems: string[]) => {
+    const viewDetailBreed = (item: string, subItems: string[]) => {
         navigation.navigate('Details', { item, subItems });
     }
 
@@ -28,7 +28,7 @@ const Home = ({ navigation }) => {
             <FlatList
                 data={breeds}
                 renderItem={({ item }) =>
-                    <BreedItem item={item[0]} subItems={item[1]} onPressItem={handleClickItem} />
+                    <BreedItem item={item[0]} subItems={item[1]} onPressItem={viewDetailBreed} />
                 }
             />
         </View>
