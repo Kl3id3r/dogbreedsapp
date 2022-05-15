@@ -24,11 +24,10 @@ const App = () => {
   );
 };
 
-const StoreApp = () => (
+const StoreApp = () =>
   <Provider store={store}>
     <StatusBar barStyle="default" />
     <App />
   </Provider>
-)
 
 export default StoreApp;
