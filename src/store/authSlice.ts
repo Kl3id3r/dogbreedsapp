@@ -25,7 +25,7 @@ export const authSlice = createSlice({
     name: PREFIX,
     initialState: authAdapter.getInitialState({
         loading: false,
-        isAuthenticated: false,
+        isAuthenticated: true,
         user: null,
         errorMessage: null,
         serverErrors: false,
