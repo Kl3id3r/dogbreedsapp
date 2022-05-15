@@ -8,7 +8,8 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         paddingHorizontal: 25,
-        backgroundColor: colors.white
+        backgroundColor: colors.white,
+        width: '100%'
     },
     authLogo: {
         width: 120,
@@ -23,7 +24,7 @@ const styles = StyleSheet.create({
         backgroundColor: colors.whiteSecondary,
         color: colors.graySecondary,
         borderRadius: 50,
-        marginBottom: 25
+        marginBottom: 20
     },
     containerLogin: {
         flex: 1,

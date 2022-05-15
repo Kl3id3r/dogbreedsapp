@@ -1,14 +1,31 @@
 import { StyleSheet, Text, View } from 'react-native'
 import React from 'react'
+import colors from '../theme/colors'
+import fonts from '../theme/fonts'
 
-const Footer = () => {
+
+const Footer = ({ title }: { title: string }) => {
     return (
-        <View>
-            <Text>Footer</Text>
+        <View style={styles.footer}>
+            <Text style={styles.footerText}>{title}</Text>
         </View>
     )
 }
 
-export default Footer
+export default Footer;
 
-const styles = StyleSheet.create({})
+const styles = StyleSheet.create({
+    footer: {
+        borderTopWidth: 1,
+        borderTopColor: colors.whiteSecondary,
+        padding: 15,
+        justifyContent: 'flex-end',
+    },
+    footerText: {
+        color: colors.gray,
+        fontSize: fonts.size.font14,
+        fontWeight: 'bold',
+        textAlign: 'center',
+        justifyContent: 'center'
+    }
+})
