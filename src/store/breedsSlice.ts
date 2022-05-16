@@ -57,8 +57,6 @@ export const breedsSlice = createSlice({
                 state.loaded = false
                 state.errorMessage = action?.error?.message || 'Error load Breeds, try again'
                 state.serverErrors = true;
-                console.log('REJECTED!!');
-                
             })
             .addCase(fetchUpdateBreeds.fulfilled, (state, { payload }: IAction) => {
                 const newBreeds = [...state.breeds]
