@@ -4,12 +4,12 @@ import React from 'react'
 type IProps = {
     item: string;
     subItems: string[];
-    onPressItem: ((item: string, subItems: string[]) => void) | undefined
+    onPressItem: ((item: string, subItems: string[]) => void)
 }
 const BreedItem = ({ item, subItems, onPressItem }: IProps) => {
 
     const handlePress = () => {
-        onPressItem && onPressItem(item, subItems);
+        onPressItem(item, subItems);
     }
 
     return (

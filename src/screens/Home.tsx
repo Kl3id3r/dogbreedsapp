@@ -1,49 +1,44 @@
 // @Vendors
 import React, { useEffect, useState } from 'react';
 import { FlatList, Text, TextInput, View } from 'react-native';
-import { useDispatch, useSelector } from 'react-redux';
-
-// @Store
-import { RootState } from '../store';
-import { fetchBreeds } from '../store/breedsSlice';
-
+import { useDispatch } from 'react-redux';
 // @Components
 import BreedItem from '../components/BreedItem';
-import styles from '../styles/PublicStyles';
 import useDebounceFn from '../hooks/useDebounceFn';
+import styles from '../styles/PublicStyles';
 
 const Home = ({ navigation }) => {
 
     const dispatch = useDispatch()
-    const { breeds } = useSelector((state: RootState) => state.breedsReducer);
+    // const { breeds } = useSelector((state: RootState) => state.breedsReducer);
 
+    const breeds = [
+        ['Pitbull', []],
+        ['Chiguagua', []],
+        ['Bullterry', ['Pitbull', 'Pastor-Aleman', 'BullDog']]
+    ]
     const [keyword, setKeyword] = useState();
-    const [breedsFiltered, setFiltered] = useState([]);
+    const [breedsFiltered, setFiltered] = useState([] as unknown);
+
     const debouncedSearchTerm = useDebounceFn(keyword, 500);
 
     const viewDetailBreed = (item: string, subItems: string[]) => {
         navigation.navigate('Details', { item, subItems });
     }
 
-    // Effect for API call
-    useEffect(
-        () => {
-            if (debouncedSearchTerm) {
-                // SetIsSearching true
-                // SearchCharacters
-                const filtered = breeds.filter( (breed: unknown[]) => breed[0].includes(debouncedSearchTerm) )
-                console.log('filtered', filtered);
-                
-            } else {
-                // Dispatch null
-            }
-        },
-        [debouncedSearchTerm] // Only call effect if debounced search term changes
-    );
-
+    // Effect for Filter Breeds
     useEffect(() => {
-        dispatch(fetchBreeds())
-    }, []);
+        if (debouncedSearchTerm) {
+            const filtered = breeds.filter((breed: unknown[]) => (breed as string[])[0].toLocaleLowerCase().includes((debouncedSearchTerm as string).toLocaleLowerCase()));
+            setFiltered(filtered);
+        } else {
+            setFiltered(breeds);
+        }
+    }, [debouncedSearchTerm]);
+
+    // useEffect(() => {
+    //     dispatch(fetchBreeds())
+    // }, []);
 
 
     return (
@@ -55,9 +50,9 @@ const Home = ({ navigation }) => {
                 placeholder="Search a Breed"
             />
 
-            <Text>Breeds ({breeds.length})</Text>
+            <Text>Breeds ({breedsFiltered.length})</Text>
             <FlatList
-                data={breeds}
+                data={breedsFiltered}
                 renderItem={({ item }) =>
                     <BreedItem item={item[0]} subItems={item[1]} onPressItem={viewDetailBreed} />
                 }
