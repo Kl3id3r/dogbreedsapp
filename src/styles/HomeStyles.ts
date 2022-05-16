@@ -15,6 +15,7 @@ export const homeStyles = StyleSheet.create({
         alignItems: 'center'
     },
     breedItemIcon: {
+        width: 20,
         marginRight: 15
     },
     breedTitle: {
@@ -28,6 +29,9 @@ export const homeStyles = StyleSheet.create({
         fontWeight: fonts.weight.full,
         marginTop: 5,
         marginBottom: 25
+    },
+    cumbsError: {
+        color: 'red'
     },
     breedDetailImage: {
         width: '100%',

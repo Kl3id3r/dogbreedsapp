@@ -1,4 +1,4 @@
-import { NavigationContainerRef, useNavigationContainerRef } from '@react-navigation/native';
+import { NavigationContainerRef } from '@react-navigation/native';
 import React, { Ref } from 'react';
 import { StyleSheet, View } from 'react-native';
 import { useDispatch, useSelector } from 'react-redux';

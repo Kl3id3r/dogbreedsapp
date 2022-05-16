@@ -11,7 +11,7 @@ const Details = ({ navigation, route }) => {
     return (
         <View style={{ flex: 1, backgroundColor: colors.white }}>
             <Text style={homeStyles.cumbsText}>
-                Breeds / {item}
+                Breeds / {item?.breed || item}
             </Text>
 
             <View style={homeStyles.breedDetailImage}>
