@@ -1,10 +1,12 @@
+import { Link } from '@react-navigation/native';
 import React from 'react';
-import { Button, StyleSheet, View } from 'react-native';
+import { StyleSheet, View, Text } from 'react-native';
 import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from '../store';
 import { fetchLogout } from '../store/authSlice';
 import AppStyledTitle from './AppTitle';
 import BulletCircle from './BulletCircle';
+import StyledButton from './StyledButton';
 
 const Header = () => {
   const dispatch = useDispatch();
@@ -16,7 +18,7 @@ const Header = () => {
       <AppStyledTitle />
       <View style={{ flexDirection: 'row' }}>
         <BulletCircle text={bulletText} style={{ marginRight: 10 }} />
-        <Button title='Logout' onPress={() => dispatch(fetchLogout())} />
+        <StyledButton text='Logout' color='green' variant='outline' onPress={() => dispatch(fetchLogout())} style={styles.btnLogout} />
       </View>
     </View>
   )
@@ -30,5 +32,9 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     paddingVertical: 20
+  },
+  btnLogout: {
+    width: 120,
+    padding: 0
   }
 })

@@ -1,16 +1,8 @@
 import React from 'react'
-import { Pressable, PressableProps, StyleSheet, Text } from 'react-native'
+import { Pressable, Text } from 'react-native'
+import { stylesButton } from '../styles/StyledButton'
 import colors from '../theme/colors'
-import fonts from '../theme/fonts'
-
-type StyledColors = 'green' | 'gray' | 'yellow'
-type StyledVariant = 'filled' | 'outline'
-
-type ButtonProps = {
-    text: string;
-    color?: StyledColors;
-    variant?: StyledVariant;
-} & PressableProps
+import { ButtonProps } from '../types/ButtonProps'
 
 const styledColors = {
     green: colors.green,
@@ -18,7 +10,7 @@ const styledColors = {
     gray: colors.gray
 }
 
-const StyledButton = ({ text, color, variant, ...restProsps }: ButtonProps) => {
+const StyledButton = ({ text, color, variant, style, ...restProsps }: ButtonProps) => {
     const styledVariants = {
         fullfilled: {
             backgroundColor: styledColors[color || 'green']
@@ -31,11 +23,12 @@ const StyledButton = ({ text, color, variant, ...restProsps }: ButtonProps) => {
     }
     return (
         <Pressable {...restProsps} style={{
-            ...styles.styledButton,
+            ...stylesButton.styledButton,
             ...styledVariants[variant || 'fullfilled'],
+            ...style
         }}>
             <Text style={{
-                ...styles.styledButtonText, color: variant ? (
+                ...stylesButton.styledButtonText, color: variant ? (
                     variant === 'outline' ? styledColors[color || 'green'] : colors.white
                 ) : colors.white
             }}>{text}</Text>
@@ -43,18 +36,4 @@ const StyledButton = ({ text, color, variant, ...restProsps }: ButtonProps) => {
     )
 }
 
-export default StyledButton
-
-const styles = StyleSheet.create({
-    styledButton: {
-        width: '100%',
-        paddingVertical: 13,
-        paddingHorizontal: 23,
-        borderRadius: 50,
-    },
-    styledButtonText: {
-        textTransform: 'uppercase',
-        fontWeight: fonts.weight.bold,
-        textAlign: 'center'
-    }
-})
+export default StyledButton;

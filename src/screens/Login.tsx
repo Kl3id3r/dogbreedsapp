@@ -1,14 +1,14 @@
 // @Vendors
 import React from 'react';
 import { Controller, useForm } from "react-hook-form";
-import { Button, Text, TextInput, View } from 'react-native';
+import { Text, TextInput, View } from 'react-native';
 import { useDispatch } from 'react-redux';
 import UserIconSvg from '../assets/icons/userIcon.svg';
 import AppStyledTitle from '../components/AppTitle';
+import StyledButton from '../components/StyledButton';
 import { fetchAuthLogin } from '../store/authSlice';
 // @Styles
 import styles from '../styles/PublicStyles';
-import colors from '../theme/colors';
 // @Types
 import { IUserData } from '../types/UserDataType';
 
@@ -27,7 +27,7 @@ const Login = () => {
         <View style={styles.containerLogin}>
             <UserIconSvg width={45} height={45} style={{ marginBottom: 15 }} />
 
-            <AppStyledTitle showSecond/>
+            <AppStyledTitle showSecond />
 
             <View style={styles.formLogin}>
                 {/* Field Name // PASAR A COMPONENTE StyledInput */}
@@ -68,7 +68,7 @@ const Login = () => {
                 />
                 {errors.email && <Text>The email is required.</Text>}
 
-                <Button color={colors.green} title='Submit' onPress={handleSubmit(onSubmit)} />
+                <StyledButton text='Submit' color='green' onPress={handleSubmit(onSubmit)} />
             </View>
         </View>
     )
