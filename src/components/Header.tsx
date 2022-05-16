@@ -9,12 +9,13 @@ import BulletCircle from './BulletCircle';
 const Header = () => {
   const dispatch = useDispatch();
   const { user } = useSelector((state: RootState) => state.authReducer);
+  const bulletText = user?.email?.substr(0, 1) || '';
 
   return (
     <View style={styles.header}>
       <AppStyledTitle />
       <View style={{ flexDirection: 'row' }}>
-        <BulletCircle text={user?.email?.substr(0, 1) || ''} style={{ marginRight: 10 }} />
+        <BulletCircle text={bulletText} style={{ marginRight: 10 }} />
         <Button title='Logout' onPress={() => dispatch(fetchLogout())} />
       </View>
     </View>
