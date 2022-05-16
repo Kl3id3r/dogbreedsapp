@@ -36,7 +36,7 @@ export const homeStyles = StyleSheet.create({
     breedDetailImage: {
         width: '100%',
         justifyContent: 'center',
-        marginBottom: 35,
+        marginBottom: 25,
         flexDirection: 'row'
     }
 })
