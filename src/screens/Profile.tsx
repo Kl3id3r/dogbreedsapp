@@ -1,5 +1,5 @@
 import React from 'react'
-import { FlatList, StyleSheet, StyleSheetProperties, Text, View } from 'react-native'
+import { FlatList, ScrollView, StyleSheet, StyleSheetProperties, Text, View } from 'react-native'
 import { useSelector } from 'react-redux'
 import BreedContainerItem from '../components/Breeds/BreedContainerItem'
 import StyledButton from '../components/StyledButton'
@@ -49,7 +49,6 @@ const Profile = ({ navigation }) => {
         <InnerTexts label='Email:' text={user?.email} />
       </View>
 
-      <View>
         <Text style={styles.mainTitle}>Your Favorites Breeds ({favoriteBreeds.length})</Text>
         <FlatList
           data={favoriteBreeds}
@@ -60,7 +59,6 @@ const Profile = ({ navigation }) => {
             />
           }
         />
-      </View>
 
       {/* Go back button */}
       <StyledButton text='Go back' onPress={() => navigation.navigate('Breeds')} />
