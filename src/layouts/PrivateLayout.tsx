@@ -1,16 +1,19 @@
-import React from 'react'
-import { StyleSheet, Text } from 'react-native'
-import MainStack from '../navigation/MainStack'
+import React from 'react';
+import { SafeAreaView } from 'react-native-safe-area-context';
+import Footer from '../components/Footer';
+import Header from '../components/Header';
+import MainStack from '../navigation/MainStack';
+// @Styles
+import styles from '../styles/PublicStyles';
 
 const PrivateLayout = () => {
   return (
-    <>
-      <Text>Someee</Text>
+    <SafeAreaView style={styles.container}>
+      <Header />
       <MainStack />
-    </>
+      <Footer title='Diseñado por @kleidergonzalez' />
+    </SafeAreaView>
   )
 }
 
-export default PrivateLayout
-
-const styles = StyleSheet.create({})
+export default PrivateLayout;

@@ -4,6 +4,6 @@
  * @param email: {string} Correo del usuario unico
  */
 export type IUserData = {
-    username: string;
+    name: string;
     email: string;
 }

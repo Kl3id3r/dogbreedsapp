@@ -9,14 +9,15 @@ const size = {
     font14: Metrics.screenWidth * (14 / 365),
     font16: Metrics.screenWidth * (16 / 365),
     font20: Metrics.screenWidth * (20 / 365),
+    font30: Metrics.screenWidth * (30 / 365),
 }
 
 const weight = {
-    full: '900',
-    semi: '600',
-    low: '400',
-    bold: 'bold',
-    normal: 'normal',
+    full: "900",
+    semi: "600",
+    low: "400",
+    bold: "bold",
+    normal: "normal",
 }
 
 export default {

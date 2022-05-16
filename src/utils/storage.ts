@@ -12,3 +12,23 @@ export const setItem = async (key: string, params: string) => {
     const response = await AsyncStorage.setItem(key, params);
     return response;
 }
+
+/**
+ * Obtener datos guardados en almacenamiento local
+ * @function getItem
+ * @param key: {string}
+ * @returns unknow
+ */
+export const getItem = async (key: string) => {
+    const response = await AsyncStorage.getItem(key);
+    return response;
+}
+
+/**
+ * Eliminar datos en el almacenamiento local
+ * @param key: {string}
+ * @returns unknow
+ */
+export const removeItem = async (key: string) => {
+    return await AsyncStorage.removeItem(key);
+}

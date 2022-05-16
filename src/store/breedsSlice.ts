@@ -28,7 +28,12 @@ export const breedsSlice = createSlice({
         serverErrors: false,
         loaded: false,
         success: false,
-        breeds: [] as unknown[]
+        breeds: [
+            ['Pitbull', []],
+            ['Chiguagua', ['So', 'Pincher']],
+            ['Bullterry', ['Pitbull', 'Pastor-Aleman', 'BullDog']]
+        ] as unknown[],
+        favoriteBreeds: [] as unknown[]
     }),
     reducers: {},
     extraReducers: (builder) => {
