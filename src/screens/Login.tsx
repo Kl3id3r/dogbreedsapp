@@ -1,16 +1,14 @@
 // @Vendors
-import React from 'react'
-import { Button, Image, Text, TextInput, View } from 'react-native'
+import React from 'react';
+import { Controller, useForm } from "react-hook-form";
+import { Button, Text, TextInput, View } from 'react-native';
 import { useDispatch } from 'react-redux';
+import UserIconSvg from '../assets/icons/userIcon.svg';
+import AppStyledTitle from '../components/AppTitle';
 import { fetchAuthLogin } from '../store/authSlice';
-import { useForm, Controller } from "react-hook-form";
-
 // @Styles
 import styles from '../styles/PublicStyles';
 import colors from '../theme/colors';
-import fonts from '../theme/fonts';
-import UserIconSvg from '../assets/icons/userIcon.svg';
-
 // @Types
 import { IUserData } from '../types/UserDataType';
 
@@ -27,15 +25,12 @@ const Login = () => {
 
     return (
         <View style={styles.containerLogin}>
-            <UserIconSvg width={45} height={45} />
-            
-            <View style={styles.boxLoginTitle}>
-                <Text style={styles.titleLogin}>BreedsApp</Text>
-                <Text style={{ fontSize: fonts.size.font16, color: colors.gray, fontWeight: '600' }}>Sign In</Text>
-            </View>
+            <UserIconSvg width={45} height={45} style={{ marginBottom: 15 }} />
+
+            <AppStyledTitle showSecond/>
 
             <View style={styles.formLogin}>
-                {/* Field Name */}
+                {/* Field Name // PASAR A COMPONENTE StyledInput */}
                 <Controller
                     control={control}
                     rules={{
@@ -52,9 +47,9 @@ const Login = () => {
                     )}
                     name="name"
                 />
-                {errors.name && <Text>This field is required.</Text>}
+                {errors.name && <Text>The name is required.</Text>}
 
-                {/* Field Email */}
+                {/* Field Email // PASAR A COMPONENTE StyledInput */}
                 <Controller
                     control={control}
                     rules={{
@@ -71,6 +66,8 @@ const Login = () => {
                     )}
                     name="email"
                 />
+                {errors.email && <Text>The email is required.</Text>}
+
                 <Button color={colors.green} title='Submit' onPress={handleSubmit(onSubmit)} />
             </View>
         </View>

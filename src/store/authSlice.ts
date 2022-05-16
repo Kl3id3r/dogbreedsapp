@@ -16,8 +16,7 @@ export const fetchAuthLogin = createAsyncThunk(`${PREFIX}/fetchLogin`, async (pa
     // Save data user local
     const jsonToString = JSON.stringify(params);
     setItem('@user_data', jsonToString)
-    const payload = { ...params }
-    return { payload };
+    return { ...params };
 });
 
 export const checkAuthentication = createAsyncThunk(`${PREFIX}/checkAuthentication`, async () => {
@@ -66,6 +65,9 @@ export const authSlice = createSlice({
                 state.isAuthenticated = false
                 state.serverErrors = false
                 state.user = null
+            })
+            .addCase(checkAuthentication.pending, (state) => {
+                state.loading = true
             })
             .addCase(checkAuthentication.fulfilled, (state, action: IAction) => {
                 state.loading = false

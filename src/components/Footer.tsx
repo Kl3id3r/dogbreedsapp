@@ -20,6 +20,7 @@ const styles = StyleSheet.create({
         borderTopColor: colors.whiteSecondary,
         padding: 15,
         justifyContent: 'flex-end',
+        backgroundColor: colors.white
     },
     footerText: {
         color: colors.gray,

@@ -1,17 +1,22 @@
 import React from 'react';
-import { Button, StyleSheet, Text, View } from 'react-native';
-import { useDispatch } from 'react-redux';
+import { Button, StyleSheet, View } from 'react-native';
+import { useDispatch, useSelector } from 'react-redux';
+import { RootState } from '../store';
 import { fetchLogout } from '../store/authSlice';
+import AppStyledTitle from './AppTitle';
+import BulletCircle from './BulletCircle';
 
 const Header = () => {
   const dispatch = useDispatch();
-
+  const { user } = useSelector((state: RootState) => state.authReducer);
 
   return (
-    <View>
-      <Text>Header xD</Text>
-
-      <Button title='Logout' onPress={() => dispatch(fetchLogout())} />
+    <View style={styles.header}>
+      <AppStyledTitle />
+      <View style={{ flexDirection: 'row' }}>
+        <BulletCircle text={user?.email?.substr(0, 1) || ''} style={{ marginRight: 10 }} />
+        <Button title='Logout' onPress={() => dispatch(fetchLogout())} />
+      </View>
     </View>
   )
 }
@@ -19,5 +24,10 @@ const Header = () => {
 export default Header;
 
 const styles = StyleSheet.create({
-
+  header: {
+    justifyContent: 'space-between',
+    flexDirection: 'row',
+    alignItems: 'center',
+    paddingVertical: 20
+  }
 })

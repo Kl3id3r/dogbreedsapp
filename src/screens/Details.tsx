@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import { Button, StyleSheet, Text, View } from 'react-native';
+import colors from '../theme/colors';
 
 const Details = ({ navigation, route }) => {
     const { item, subItems } = route.params;
@@ -10,7 +11,7 @@ const Details = ({ navigation, route }) => {
     }, [item, subItems]);
 
     return (
-        <View>
+        <View style={{ flex: 1, backgroundColor: colors.white }}>
             <Text>Details of {item} </Text>
             <Text>Subitems ({subItems.length}) </Text>
             <Button title="Go back" onPress={() => navigation.navigate('Breeds')} />

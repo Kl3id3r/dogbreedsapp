@@ -1,9 +1,10 @@
 import { Button, StyleSheet, Text, View } from 'react-native'
 import React from 'react'
+import colors from '../theme/colors'
 
 const Profile = ({ navigation }) => {
   return (
-    <View>
+    <View style={{ flex: 1, backgroundColor: colors.white }}>
       <Text>Profileeeeeee</Text>
       <Button
         title="go Home"

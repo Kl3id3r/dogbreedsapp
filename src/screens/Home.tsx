@@ -6,6 +6,7 @@ import { useDispatch } from 'react-redux';
 import BreedItem from '../components/BreedItem';
 import useDebounceFn from '../hooks/useDebounceFn';
 import styles from '../styles/PublicStyles';
+import colors from '../theme/colors';
 
 const Home = ({ navigation }) => {
 
@@ -42,7 +43,7 @@ const Home = ({ navigation }) => {
 
 
     return (
-        <View style={{ flex: 1 }}>
+        <View style={{ flex: 1, backgroundColor: colors.white }}>
             <TextInput
                 style={styles.control}
                 onChangeText={setKeyword}

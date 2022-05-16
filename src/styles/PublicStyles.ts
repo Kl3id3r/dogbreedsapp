@@ -40,7 +40,7 @@ const styles = StyleSheet.create({
     },
     titleLogin: {
         fontSize: fonts.size.font30,
-        fontWeight: 'bold',
+        fontWeight: fonts.weight.bold,
         color: colors.green
     }
 });
