@@ -22,5 +22,17 @@ export const homeStyles = StyleSheet.create({
         fontWeight: fonts.weight.semi,
         color: colors.graySecondary,
         textTransform: 'capitalize'
+    },
+    cumbsText: {
+        fontSize: fonts.size.font16,
+        fontWeight: fonts.weight.full,
+        marginTop: 5,
+        marginBottom: 25
+    },
+    breedDetailImage: {
+        width: '100%',
+        justifyContent: 'center',
+        marginBottom: 35,
+        flexDirection: 'row'
     }
 })

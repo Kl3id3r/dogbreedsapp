@@ -1,24 +1,28 @@
-import React, { useEffect } from 'react';
-import { Button, StyleSheet, Text, View } from 'react-native';
+import React from 'react';
+import { Text, View } from 'react-native';
+import BreedContainerItem from '../components/Breeds/BreedContainerItem';
+import StyledButton from '../components/StyledButton';
+import { homeStyles } from '../styles/HomeStyles';
 import colors from '../theme/colors';
 
 const Details = ({ navigation, route }) => {
     const { item, subItems } = route.params;
 
-    useEffect(() => {
-        console.log(item);
-        console.log(subItems);
-    }, [item, subItems]);
-
     return (
         <View style={{ flex: 1, backgroundColor: colors.white }}>
-            <Text>Details of {item} </Text>
-            <Text>Subitems ({subItems.length}) </Text>
-            <Button title="Go back" onPress={() => navigation.navigate('Breeds')} />
+            <Text style={homeStyles.cumbsText}>
+                Breeds / {item}
+            </Text>
+
+            <View style={homeStyles.breedDetailImage}>
+                {/* Image here */}
+            </View>
+
+            <BreedContainerItem item={item} subItems={subItems} onPressItem={() => null} />
+
+            <StyledButton text='Go back' onPress={() => navigation.navigate('Breeds')} />
         </View>
     )
 }
 
 export default Details;
-
-const styles = StyleSheet.create({})

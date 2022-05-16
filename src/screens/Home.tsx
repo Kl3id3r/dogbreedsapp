@@ -1,15 +1,14 @@
 // @Vendors
 import React, { useEffect, useState } from 'react';
 import { FlatList, Text, TextInput, View } from 'react-native';
-import { useSelector } from 'react-redux';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import BreedContainerItem from '../components/Breeds/BreedContainerItem';
 import useDebounceFn from '../hooks/useDebounceFn';
 import { RootState } from '../store';
 import { fetchBreeds } from '../store/breedsSlice';
+import { homeStyles } from '../styles/HomeStyles';
 import styles from '../styles/PublicStyles';
 import colors from '../theme/colors';
-import fonts from '../theme/fonts';
 
 const Home = ({ navigation }) => {
 
@@ -27,7 +26,7 @@ const Home = ({ navigation }) => {
     useEffect(() => {
         dispatch(fetchBreeds())
     }, []);
-    
+
     // Effect for Filter Breeds
     useEffect(() => {
         if (debouncedSearchTerm) {
@@ -47,7 +46,7 @@ const Home = ({ navigation }) => {
                 placeholder="Search a Breed"
             />
 
-            <Text style={{ fontSize: fonts.size.font16, fontWeight: fonts.weight.full, marginTop: 5, marginBottom: 25 }}>
+            <Text style={homeStyles.cumbsText}>
                 Breeds ({breedsFiltered.length})
             </Text>
 
