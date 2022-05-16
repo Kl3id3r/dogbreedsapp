@@ -1,3 +1,4 @@
+import { useNavigationContainerRef } from '@react-navigation/native';
 import React from 'react';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import Footer from '../components/Footer';
@@ -7,10 +8,12 @@ import MainStack from '../navigation/MainStack';
 import styles from '../styles/PublicStyles';
 
 const PrivateLayout = () => {
+  const navigationRef = useNavigationContainerRef();
+
   return (
     <SafeAreaView style={styles.container}>
-      <Header />
-      <MainStack />
+      <Header navigationRef={navigationRef} />
+      <MainStack navigationRef={navigationRef} />
       <Footer title='Diseñado por @kleidergonzalez' />
     </SafeAreaView>
   )

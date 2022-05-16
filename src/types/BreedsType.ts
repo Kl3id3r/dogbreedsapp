@@ -1,12 +1,19 @@
+export type IBreedList = {
+    breed: string;
+    isFavorite: boolean;
+    subBreed: string[];
+}
+
 export type IBreeds = {
-    breeds: unknown[]
+    breeds: IBreedList[]
 }
 
 export type BreedContainerProps = {
-    item?: string;
-    subItems?: string[];
-    onPressItem: ((item?: string, subItems?: string[]) => void);
-    isChild?: boolean
+    item?: IBreedList | string;
+    subItems?: IBreedList[];
+    onPressItem: ((item?: IBreedList | string, subItems?: string[]) => void);
+    isChild?: boolean,
+    handleFavorite?: ((item?: IBreedList) => void);
 }
 
 export type BreedItemProps = {

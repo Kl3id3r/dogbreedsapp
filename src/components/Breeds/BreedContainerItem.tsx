@@ -4,7 +4,7 @@ import { homeStyles } from '../../styles/HomeStyles';
 import { BreedContainerProps } from '../../types/BreedsType';
 import BreedItem from './BreedItem';
 
-const BreedContainerItem = ({ item, subItems, onPressItem }: BreedContainerProps) => {
+const BreedContainerItem = ({ item, onPressItem, handleFavorite }: BreedContainerProps) => {
     const [showSub, setShowSub] = useState(false);
 
     const handleShow = () => {
@@ -15,15 +15,15 @@ const BreedContainerItem = ({ item, subItems, onPressItem }: BreedContainerProps
         <View style={homeStyles.breedItemContainer}>
             <BreedItem
                 item={item}
-                subItems={subItems}
                 showSub={showSub}
                 onPressItem={onPressItem}
                 onShowSub={handleShow}
+                handleFavorite={handleFavorite}
             />
             {
-                subItems?.length ? (
+                typeof item === 'object' && item?.subBreed?.length ? (
                     showSub && <FlatList
-                        data={subItems}
+                        data={item.subBreed}
                         renderItem={({ item: child }) =>
                             <BreedItem item={child} onPressItem={onPressItem} isChild />
                         }

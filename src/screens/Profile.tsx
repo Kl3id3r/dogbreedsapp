@@ -29,8 +29,9 @@ const InnerTexts = ({ label, text, style, ...props }: { label: string, text: str
 
 const Profile = ({ navigation }) => {
   const { user } = useSelector((state: RootState) => state.authReducer);
-  const { favoriteBreeds } = useSelector((state: RootState) => state.breedsReducer);
+  const { breeds } = useSelector((state: RootState) => state.breedsReducer);
 
+  const favoriteBreeds = breeds.filter(e => e.isFavorite);
 
   return (
     <View style={{ flex: 1, backgroundColor: colors.white }}>
@@ -54,9 +55,8 @@ const Profile = ({ navigation }) => {
           data={favoriteBreeds}
           renderItem={({ item }) =>
             <BreedContainerItem
-              item={item[0]}
-              subItems={item[1]}
-              onPressItem={() => navigation.navigate('Details', { item, subItems: item[1] })}
+              item={item}
+              onPressItem={() => navigation.navigate('Details', { item: item?.breed || item, subItems: item?.subBreed || [] })}
             />
           }
         />

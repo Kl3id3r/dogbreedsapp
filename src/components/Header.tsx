@@ -1,6 +1,6 @@
-import { Link } from '@react-navigation/native';
-import React from 'react';
-import { StyleSheet, View, Text } from 'react-native';
+import { NavigationContainerRef } from '@react-navigation/native';
+import React, { Ref } from 'react';
+import { StyleSheet, View } from 'react-native';
 import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from '../store';
 import { fetchLogout } from '../store/authSlice';
@@ -8,7 +8,7 @@ import AppStyledTitle from './AppTitle';
 import BulletCircle from './BulletCircle';
 import StyledButton from './StyledButton';
 
-const Header = () => {
+const Header = ({ navigationRef }: { navigationRef: Ref<NavigationContainerRef<any>> | undefined }) => {
   const dispatch = useDispatch();
   const { user } = useSelector((state: RootState) => state.authReducer);
   const bulletText = user?.email?.substr(0, 1) || '';
@@ -17,7 +17,7 @@ const Header = () => {
     <View style={styles.header}>
       <AppStyledTitle />
       <View style={{ flexDirection: 'row' }}>
-        <BulletCircle text={bulletText} style={{ marginRight: 10 }} />
+        <BulletCircle text={bulletText} style={{ marginRight: 10 }} onPress={() => navigationRef?.navigate('Profile')} />
         <StyledButton text='Logout' color='green' variant='outline' onPress={() => dispatch(fetchLogout())} style={styles.btnLogout} />
       </View>
     </View>
