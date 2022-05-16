@@ -8,7 +8,10 @@ import colors from '../theme/colors'
 import fonts from '../theme/fonts'
 
 const InnerTexts = ({ label, text, style, ...props }: { label: string, text: string, style?: StyleSheetProperties | undefined }) => (
-  <View style={{ flexDirection: 'row', ...style }} {...props}>
+  <View style={{
+    flexDirection: 'row',
+    ...style
+  }} {...props}>
     <Text style={{
       fontSize: fonts.size.font16,
       fontWeight: fonts.weight.bold,
@@ -35,8 +38,15 @@ const Profile = ({ navigation }) => {
       <Text style={styles.mainTitle}>Your Profile</Text>
 
       {/* Profiles */}
-      <InnerTexts label='Name:' text={user?.name} />
-      <InnerTexts label='Email:' text={user?.email} style={{ marginBottom: 35 }} />
+      <View style={{
+        backgroundColor: colors.whiteSecondary,
+        padding: 10,
+        borderRadius: 5,
+        marginBottom: 35
+      }}>
+        <InnerTexts label='Name:' text={user?.name} />
+        <InnerTexts label='Email:' text={user?.email} />
+      </View>
 
       <View>
         <Text style={styles.mainTitle}>Your Favorites Breeds ({favoriteBreeds.length})</Text>
@@ -66,6 +76,6 @@ const styles = StyleSheet.create({
     color: colors.graySecondary,
     fontWeight: fonts.weight.semi,
     textAlign: 'center',
-    marginBottom: 25
+    marginBottom: 15
   }
 })
