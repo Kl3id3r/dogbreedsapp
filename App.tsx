@@ -4,9 +4,9 @@ import { RootState, store } from './src/store';
 import { Provider, useSelector } from 'react-redux';
 import { SafeAreaView, StatusBar, ActivityIndicator } from 'react-native';
 
-// @Navigation
-import MainStack from './src/navigation/MainStack';
-import AuthStack from './src/navigation/AuthStack';
+// @Layouts
+import PrivateLayout from './src/layouts/PrivateLayout';
+import PublicLayout from './src/layouts/PublicLayout';
 
 const App = () => {
   const { isAuthenticated, loading } = useSelector(
@@ -17,18 +17,17 @@ const App = () => {
     <SafeAreaView style={{ flex: 1 }}>
       {
         !loading ? (
-          isAuthenticated ? <MainStack /> : <AuthStack />
+          isAuthenticated ? <PrivateLayout />  : <PublicLayout />
         ) : <ActivityIndicator />
       }
     </SafeAreaView>
   );
 };
 
-const StoreApp = () => (
+const StoreApp = () =>
   <Provider store={store}>
     <StatusBar barStyle="default" />
     <App />
   </Provider>
-)
 
 export default StoreApp;
